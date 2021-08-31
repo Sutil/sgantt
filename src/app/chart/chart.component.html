@@ -1,0 +1,11 @@
+<p>chart works!</p>
+
+
+<div>
+  <div class="item" *ngFor="let i of items" >
+    <div class="key">{{ i.key }}</div>
+    <div class="name">{{ i.name }} </div>
+    <div class="start-date">{{ i.getStartDate() | date : 'yyyy/MM/dd' }}</div>
+    <div class="end-date">{{ i.getEndDate() | date : 'yyyy/MM/dd' }}</div>
+  </div>
+</div>
