@@ -1,3 +1,4 @@
+import { ChartService } from './chart.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -10,6 +11,9 @@ import { ChartComponent } from './chart.component';
   imports: [
     CommonModule,
     ChartRoutingModule
+  ],
+  providers: [
+    ChartService
   ]
 })
 export class ChartModule { }

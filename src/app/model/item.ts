@@ -3,6 +3,8 @@ import { addDays } from 'date-fns';
 export class Item {
 
   constructor(
+    public id: number,
+    public parentId: number,
     public key: string,
     public name: string,
     public startDate: Date,
@@ -10,6 +12,7 @@ export class Item {
     public duration?: number,
     public depends?: Item,
     public children?: Item[],
+    public dependsId?: number
     ) {}
 
     getDuration() {
