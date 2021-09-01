@@ -8,6 +8,10 @@ const routes: Routes = [{
   children: [
     {
       path: '',
+      loadChildren: () => import('./issue-reader/issue-reader.module').then(m => m.IssueReaderModule)
+    },
+    {
+      path: 'chart',
       loadChildren: () => import('./chart/chart.module').then(m => m.ChartModule)
     }
   ]

@@ -12,7 +12,8 @@ export class Item {
     public duration?: number,
     public depends?: Item,
     public children?: Item[],
-    public dependsId?: number
+    public dependsId?: number,
+    public error?: string
     ) {}
 
     getDuration() {

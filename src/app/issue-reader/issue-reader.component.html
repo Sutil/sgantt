@@ -1,0 +1,38 @@
+<p>issue-reader works!</p>
+
+<div class="issues">
+  <span>Cole abaixo a linha no formato:</span>
+  <div>
+    <strong> Issue Type,Issue key,Issue id,Parent id,Summary,Original estimate</strong>
+  </div>
+  <div>
+    exemplo:
+  </div>
+  <div>
+    <div>Task,ATV-601,11653,,Alterar nome dos databases para refletirem o subdomínio do cliente (Homologação),14400</div>
+    <div>Sub-task,ATV-605,11657,,Refatorar settings.json do front end (Homologação),230400</div>
+  </div>
+  <textarea (input)="insert($event)" class="issue-input" ></textarea>
+
+  <button (click)="check()" >Começar a brincadeira</button>
+</div>
+
+<div class="result">
+  <table>
+    <thead>
+      <tr>
+        <th>key</th>
+        <th>name</th>
+        <th>duration</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let i of objs" [class.atention]="i.estimate === 0" >
+        <td [class.subtask]="i.type === 'Sub-task'">{{ i.key }}</td>
+        <td>{{ i.name }}</td>
+        <td>{{ i.estimate / (60*60*8) }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <button (click)="export()" >Export</button>
+</div>

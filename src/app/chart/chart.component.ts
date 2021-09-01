@@ -17,6 +17,7 @@ export class ChartComponent implements OnInit {
 
   ngOnInit(): void {
     this.items = this.chartService.getIssues();
+    console.log('recebido>>>>>>>>>>>', this.items);
   }
 
 }

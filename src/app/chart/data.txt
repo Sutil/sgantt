@@ -1,0 +1,67 @@
+Issue Type,Issue key,Issue id,Parent id,Summary,Parent,Parent summary,Original estimate
+Story,ATV-687,11739,,OCTANTE - separar as minutas dentro do Ativus,,,28800
+Story,ATV-639,11691,,CONSULT - Ajustes,,,86400
+Sub-task,ATV-642,11694,11691,Ajustar os botões para que fiquem na mesma ordem do restante da plataforma,11691,CONSULT - Ajustes,0
+Sub-task,ATV-645,11697,11691,"Em contatos ajustar o nome da aba para CONSULTAS, já que vai englobar todas as consultas realizadas no sistema (Certidões, consult, M.O, P.E, etc)",11691,CONSULT - Ajustes,0
+Sub-task,ATV-646,11698,11691,"Ao solicitar um Consult de uma pessoa que não está na base de contatos daquele ambiente, deve ser exibido uma mensagem de que o contato foi salvo com sucesso.",11691,CONSULT - Ajustes,0
+Sub-task,ATV-718,11772,11691,"[Backend] Ao criar uma consulta, retornar uma flag no reponse para identificar se contato foi inserido ou não",11691,CONSULT - Ajustes,0
+Sub-task,ATV-799,11884,11691,[Frontend] Inserir Breve descrição do que é cada status (centro superior da tela),11691,CONSULT - Ajustes,0
+Story,ATV-678,11730,,Migrar Consulta de BigDataCorp para o Ativus,,,144000
+Task,ATV-786,11871,,Infrastructure | CORTEVA - Criar instância para homologação do SOLO,,,86400
+Task,ATV-601,11653,,Alterar nome dos databases para refletirem o subdomínio do cliente (Homologação),,,14400
+Task,ATV-605,11657,,Refatorar settings.json do front end (Homologação),,,230400
+Sub-task,ATV-603,11655,11657,Infrastructure | Modificar o padrão de URLs no Route 53 da AWS (Homologação),11657,Refatorar settings.json do front end (Homologação),28800
+Sub-task,ATV-604,11656,11657,Front end | Buscar o ProgramID da URL (Homologação),11657,Refatorar settings.json do front end (Homologação),28800
+Sub-task,ATV-606,11658,11657,Back end | Criar tabela para armezenar o settings.json (Homologação),11657,Refatorar settings.json do front end (Homologação),28800
+Sub-task,ATV-607,11659,11657,Backend | Criar os endpoints que retornam o campo settingsJson do banco (Homologação),11657,Refatorar settings.json do front end (Homologação),28800
+Sub-task,ATV-608,11660,11657,Front end | Fazer a chamada dos endpoints para recuperar o settings.json (Homologação),11657,Refatorar settings.json do front end (Homologação),57600
+Sub-task,ATV-609,11661,11657,Infrastructure | Refatorar o projeto deploys para fazer deploy em um único bucket (Homologação),11657,Refatorar settings.json do front end (Homologação),14400
+Story,ATV-725,11779,,Status Consult,,,0
+Task,ATV-791,11876,,Consult deveria validar se existe configuração para se criar uma consulta,,,14400
+Story,ATV-630,11682,,Criar uma solicitação de certidão,,,144000
+Sub-task,ATV-755,11839,11682,[Frontend] Criar estrutura da tela para comportar listagem + filtro + drawer,11682,Criar uma solicitação de certidão,0
+Sub-task,ATV-783,11868,11682,[Frontend] Criar um componente de gestão da criação da certidão,11682,Criar uma solicitação de certidão,0
+Sub-task,ATV-784,11869,11682,[Frontend] Criar estrutura (json) dos campos dinâmicos da certidão,11682,Criar uma solicitação de certidão,0
+Sub-task,ATV-754,11838,11682,[Frontend] Criar uma solicitação de certidão,11682,Criar uma solicitação de certidão,288000
+Sub-task,ATV-698,11750,11682,[Backend] Criar uma solicitação por matrícula,11682,Criar uma solicitação de certidão,288000
+Sub-task,ATV-647,11699,11682,[Backend] Criar uma solicitação por livro3,11682,Criar uma solicitação de certidão,288000
+Sub-task,ATV-806,11901,11682,[Backend] [Fix] Corrigir endpoint que busca estado/cidade para não duplicar,11682,Criar uma solicitação de certidão,0
+Sub-task,ATV-824,11919,11682,[Backend] Criar solicitação por livro3 / Contanto não existente,11682,Criar uma solicitação de certidão,0
+Story,ATV-787,11872,,Listar e filtrar solicitações de certidões,,,86400
+Sub-task,ATV-753,11837,11872,[Backend] Endpoint que permite listar e filtrar cartórios (ARISP) ,11872,Listar e filtrar solicitações de certidões,0
+Sub-task,ATV-757,11841,11872,[Backend] Endpoint para listar Solicitações de certidão,11872,Listar e filtrar solicitações de certidões,57600
+Sub-task,ATV-758,11842,11872,[Frontend] Listar solicitações de certidão,11872,Listar e filtrar solicitações de certidões,57600
+Sub-task,ATV-759,11843,11872,[Frontend] Filtro de solicitações de certidão,11872,Listar e filtrar solicitações de certidões,57600
+Sub-task,ATV-803,11898,11872,[FrontEnd] Filtragem pelos status,11872,Listar e filtrar solicitações de certidões,0
+Story,ATV-789,11874,,Visualizar solicitação + visualizar certidão,,,86400
+Sub-task,ATV-760,11844,11874,[Backende] Endpoint para retornar solicitação por id,11874,Visualizar solicitação + visualizar certidão,0
+Sub-task,ATV-652,11704,11874,[Frontend] Visualização da solicitação de certidão,11874,Visualizar solicitação + visualizar certidão,0
+Story,ATV-788,11873,,Histórico de solicitação de certidão,,,144000
+Sub-task,ATV-761,11845,11873,[Backend] Verificação de resposta de solicitações.,11873,Histórico de solicitação de certidão,144000
+Sub-task,ATV-765,11850,11873,[Frontend] Responder exigência do cartório,11873,Histórico de solicitação de certidão,0
+Task,ATV-805,11900,,Transferir tabela shedlock para o schema ativusglobal,,,86400
+Story,ATV-819,11914,,Octante/Andav - Ajustar a cor da label de acordo com as já existentes,,,14400
+Story,ATV-802,11897,,CONSULT - visualização de créditos - usuário program,,,28800
+Story,ATV-820,11915,,Octante/Andav - Ajustar label Cancelar e Confirmar ao adicionar Solicitações a Título/Termo,,,14400
+Epic,ATV-435,11475,,Aba de Serviços - Integração p/ Certidões ,,,0
+Epic,ATV-223,11177,,Aba de serviços - Consult,,,120
+Epic,ATV-695,11747,,Relatórios de custas da Bunge,,,0
+Story,ATV-67,11021,,Inserir mais de um signatário de uma só vez,,,86400
+Story,ATV-413,11389,,Exportação de parceiros para excel,,,43200
+Story,ATV-438,11478,,"A funcionalidade de exportar não está disponível na aba de parceiros, apenas em relatórios. Replicar na aba de parceiros também. @601834a547a95400692bf62e decidir se vamos criar endpoint para isso ou se vamos usar o aggrid. @60105e8d47a9540069edf3f0 ",,,86400
+Bug,ATV-800,11895,,[FrontEnd][Admin]Paginação do perfil de usuario não esta funcionando,,,14400
+Task,ATV-808,11903,,Multifornecedores | criar ambientes,,,14400
+Story,ATV-809,11904,,Multifornecedores | Configuração para usar Lastro customizado,,,14400
+Sub-task,ATV-828,11923,11904,[Backend] Script para criação de script de parâmetro customizado,11904,Multifornecedores | Configuração para usar Lastro customizado,0
+Story,ATV-810,11905,,Multifornecedores | Criar uma solicitação,,,230400
+Sub-task,ATV-829,11924,11905,[Frontend][Partner] Novos tipos de anexos,11905,Multifornecedores | Criar uma solicitação,0
+Sub-task,ATV-830,11925,11905,[Backend] Permitir lista de produtores na solicitação + notificações por email,11905,Multifornecedores | Criar uma solicitação,0
+Sub-task,ATV-831,11926,11905,[Backend] Adicionar tipos de signatários,11905,Multifornecedores | Criar uma solicitação,0
+Sub-task,ATV-832,11927,11905,[Frontend][Partner] Criar uma solicitação,11905,Multifornecedores | Criar uma solicitação,0
+Story,ATV-818,11913,,Multifornecedores | minutas parametrizadas,,,86400
+Task,ATV-834,11929,,Cerimônias Scrum | Sprint 13,,,673200
+Sub-task,ATV-835,11930,11929,CLONE - Cerimônias Scrum | Sprint 13 - Sprint Planning 1,11929,Cerimônias Scrum | Sprint 13,57600
+Sub-task,ATV-836,11931,11929,CLONE - Cerimônias Scrum | Sprint 13 - Daily,11929,Cerimônias Scrum | Sprint 13,96000
+Sub-task,ATV-837,11932,11929,CLONE - Cerimônias Scrum | Sprint 13 - Sprint Review,11929,Cerimônias Scrum | Sprint 13,57600
+Sub-task,ATV-838,11933,11929,CLONE - Cerimônias Scrum | Sprint 13 - Sprint Retrospective,11929,Cerimônias Scrum | Sprint 13,14400
+Task,ATV-840,11935,,Provisionar novo cliente do ATIVUS v2 - FIAGRIL,,,14400
