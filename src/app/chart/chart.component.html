@@ -9,6 +9,7 @@
       <th>start date</th>
       <th>end date</th>
       <th>duration</th>
+      <th>It depends on</th>
     </tr>
   </thead>
   <tbody>
@@ -16,18 +17,20 @@
       <tr>
         <td class="key">{{ i.key }}</td>
         <td class="name">{{ i.name }} </td>
-        <td class="start-date">{{ i.getStartDate() | date : 'yyyy/MM/dd' }}</td>
-        <td class="end-date">{{ i.getEndDate() | date : 'yyyy/MM/dd' }}</td>
+        <td class="start-date">{{ i.getStartDate() | date : 'dd/MM/yyyy' }}</td>
+        <td class="end-date">{{ i.getEndDate() | date : 'dd/MM/yyyy' }}</td>
         <td class="duration">{{ i.duration }}</td>
+        <td></td>
       </tr>
       <ng-container *ngIf="i.children && i.children.length > 0" >
         <ng-container *ngFor="let c of i.children">
           <tr>
             <td class="key">{{ c.key }}</td>
             <td class="name">{{ c.name }} </td>
-            <td class="start-date">{{ c.getStartDate() | date : 'yyyy/MM/dd' }}</td>
-            <td class="end-date">{{ c.getEndDate() | date : 'yyyy/MM/dd' }}</td>
+            <td class="start-date">{{ c.getStartDate() | date : 'dd/MM/yyyy' }}</td>
+            <td class="end-date">{{ c.getEndDate() | date : 'dd/MM/yyyy' }}</td>
             <td class="duration"> <input [value]="c.duration" (input)="c.duration = $event.target.value" type="number"></td>
+            <td><button type="button" class="btn btn-primary" >Depends</button></td>
           </tr>
         </ng-container>
 

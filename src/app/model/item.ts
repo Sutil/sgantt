@@ -25,6 +25,17 @@ export class Item {
 
 
     getEndDate(): Date {
+
+      if(this.children && this.children.length > 0) {
+        return this.children.reduce((maxDate, child) => {
+          if(child.getEndDate() > maxDate) {
+            return child.getEndDate();
+          }
+          return maxDate;
+        }, new Date('1970-01-01 00:00'));
+
+      }
+
       if(this.getStartDate()) {
         return addDays(this.getStartDate(), this.getDuration());
       }

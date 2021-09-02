@@ -12,8 +12,10 @@ tr.atention {
   background-color: yellow;
 }
 
-td.subtask {
-  padding-left: 10px;
+td {
+  &.subtask {
+    padding-left: 10px;
+  }
 }
 
 

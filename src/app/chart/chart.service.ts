@@ -13,12 +13,12 @@ export class ChartService {
   constructor() { }
 
   getIssues() {
-    console.log(this.list);
+
+    this.list = JSON.parse(localStorage.getItem('sgannt:models'));
+
     const allchildren = this.list.map(
       m => new Item(m.id, m.parentId, m.key, m.name, new Date("2021-08-31 00:00"), null, (m.estimate / (60*60*8)), null, [], m.dependsId)
     ).filter(i => i.parentId !== 0);
-
-    console.log(allchildren.length);
 
     const allFathers = this.list.map(
       m => new Item(m.id, m.parentId, m.key, m.name, new Date("2021-08-31 00:00"), null, (m.estimate / (60*60*8)), null, [], m.dependsId)
@@ -58,6 +58,6 @@ export class ChartService {
   }
 
   setModel(models: Model[]) {
-    this.list = models;
+    localStorage.setItem('sgannt:models', JSON.stringify(models));
   }
 }
