@@ -6,10 +6,12 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <a class="nav-link" [routerLink]="'/'"  routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >Home <span class="sr-only">(current)</span></a>
-
+      <a class="nav-link" [routerLink]="['chart']" routerLinkActive="active" >Plan</a>
       <a class="nav-link" [routerLink]="['members']" routerLinkActive="active" >Team</a>
     </div>
   </div>
 </nav>
 
-<router-outlet></router-outlet>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

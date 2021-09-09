@@ -1,1 +1,40 @@
 <p>members works!</p>
+<div class="members">
+  <form class="form" [formGroup]="form" (submit)="createMember()" >
+
+    <div class="mb-3">
+      <label for="input-name">Name</label>
+      <input class="form-control" type="text" placeholder="Member name" id="input-name" formControlName="name">
+    </div>
+
+    <div class="mb-3">
+      <label for="input-hour">Hours per day</label>
+      <input type="number" class="form-control" placeholder="Hours per day" id="input-hour" formControlName="hours">
+    </div>
+
+    <div class="mb-3">
+      <button class="btn btn-primary" [disabled]="form.invalid" >Save</button>
+    </div>
+  </form>
+
+
+
+  <div class="list mt-5">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Hours per day</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let member of members" >
+          <td>{{ member.name }}</td>
+          <td>{{ member.hours }}</td>
+          <td> <button class="btn btn-danger" (click)="deleteMember(member)" >Delete</button> </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

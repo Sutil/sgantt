@@ -1,7 +1,7 @@
 <p>chart works!</p>
 
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Key</th>
@@ -19,8 +19,14 @@
         <td class="name">{{ i.name }} </td>
         <td class="start-date">{{ i.getStartDate() | date : 'dd/MM/yyyy' }}</td>
         <td class="end-date">{{ i.getEndDate() | date : 'dd/MM/yyyy' }}</td>
-        <td class="duration">{{ i.duration }}</td>
+        <td class="duration" *ngIf="i.children && i.children.length > 0; else durationNoChildren" >{{ i.duration }}</td>
+
+        <ng-template #durationNoChildren >
+          <td class="duration"> <input [value]="i.duration" (input)="i.duration = $event.target.value" type="number"></td>
+        </ng-template>
+
         <td></td>
+
       </tr>
       <ng-container *ngIf="i.children && i.children.length > 0" >
         <ng-container *ngFor="let c of i.children">
@@ -30,7 +36,7 @@
             <td class="start-date">{{ c.getStartDate() | date : 'dd/MM/yyyy' }}</td>
             <td class="end-date">{{ c.getEndDate() | date : 'dd/MM/yyyy' }}</td>
             <td class="duration"> <input [value]="c.duration" (input)="c.duration = $event.target.value" type="number"></td>
-            <td><button type="button" class="btn btn-primary" >Depends</button></td>
+            <td><button type="button" class="btn btn-primary" (click)="openModal(modal)" >Depends</button></td>
           </tr>
         </ng-container>
 
@@ -40,3 +46,14 @@
 
   </tbody>
 </table>
+
+<ng-template #modal>
+  <div class="choise-depends">
+    <div class="modal-header">
+      <h4>Choise a dependent for</h4>
+    </div>
+    <div class="modal-body">
+      test
+    </div>
+  </div>
+</ng-template>

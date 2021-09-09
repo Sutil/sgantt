@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { ChartRoutingModule } from './chart-routing.module';
 import { ChartComponent } from './chart.component';
 import { FormsModule } from '@angular/forms';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     FormsModule,
-    ChartRoutingModule
+    ChartRoutingModule,
+    ModalModule.forChild(),
   ],
   providers: [
   ]
