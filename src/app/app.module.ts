@@ -1,3 +1,5 @@
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -10,7 +12,9 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    TypeaheadModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

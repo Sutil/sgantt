@@ -1,59 +1,73 @@
-<p>chart works!</p>
-
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>Key</th>
-      <th>name</th>
-      <th>start date</th>
-      <th>end date</th>
-      <th>duration</th>
-      <th>It depends on</th>
-    </tr>
-  </thead>
-  <tbody>
-    <ng-container *ngFor="let i of items">
+<div class="chart">
+  <table class="table">
+    <thead>
       <tr>
-        <td class="key">{{ i.key }}</td>
-        <td class="name">{{ i.name }} </td>
-        <td class="start-date">{{ i.getStartDate() | date : 'dd/MM/yyyy' }}</td>
-        <td class="end-date">{{ i.getEndDate() | date : 'dd/MM/yyyy' }}</td>
-        <td class="duration" *ngIf="i.children && i.children.length > 0; else durationNoChildren" >{{ i.duration }}</td>
-
-        <ng-template #durationNoChildren >
-          <td class="duration"> <input [value]="i.duration" (input)="i.duration = $event.target.value" type="number"></td>
-        </ng-template>
-
-        <td></td>
-
+        <th>Key</th>
+        <th>name</th>
+        <th>start date</th>
+        <th>end date</th>
+        <th>duration</th>
+        <th>It depends on</th>
       </tr>
-      <ng-container *ngIf="i.children && i.children.length > 0" >
-        <ng-container *ngFor="let c of i.children">
-          <tr>
-            <td class="key">{{ c.key }}</td>
-            <td class="name">{{ c.name }} </td>
-            <td class="start-date">{{ c.getStartDate() | date : 'dd/MM/yyyy' }}</td>
-            <td class="end-date">{{ c.getEndDate() | date : 'dd/MM/yyyy' }}</td>
-            <td class="duration"> <input [value]="c.duration" (input)="c.duration = $event.target.value" type="number"></td>
-            <td><button type="button" class="btn btn-primary" (click)="openModal(modal)" >Depends</button></td>
-          </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let i of items">
+        <tr>
+          <td class="key">{{ i.key }}</td>
+          <td class="name">{{ i.name }} </td>
+          <td class="start-date">{{ i.getStartDate() | date : 'dd/MM/yyyy' }}</td>
+          <td class="end-date">{{ i.getEndDate() | date : 'dd/MM/yyyy' }}</td>
+          <td class="duration" *ngIf="i.children && i.children.length > 0; else durationNoChildren">{{ i.duration }}
+          </td>
+
+          <ng-template #durationNoChildren>
+            <td class="duration"> <input [value]="i.duration" (input)="i.duration = $event.target.value" type="number">
+            </td>
+          </ng-template>
+
+          <td></td>
+
+        </tr>
+        <ng-container *ngIf="i.children && i.children.length > 0">
+          <ng-container *ngFor="let c of i.children">
+            <tr class="child">
+              <td class="key">{{ c.key }}</td>
+              <td class="name">{{ c.name }} </td>
+              <td class="start-date">{{ c.getStartDate() | date : 'dd/MM/yyyy' }}</td>
+              <td class="end-date">{{ c.getEndDate() | date : 'dd/MM/yyyy' }}</td>
+              <td class="duration"> <input [value]="c.duration" (input)="c.duration = $event.target.value"
+                  type="number"></td>
+              <td *ngIf="!c.depends; else dependsFilled" ><button type="button" class="btn btn-primary" (click)="openModal(modal, c)">Depends</button></td>
+              <ng-template #dependsFilled>
+                <td><button type="button" class="btn btn-primary" (click)="openModal(modal, c)">{{c.depends.key}}</button></td>
+              </ng-template>
+
+            </tr>
+          </ng-container>
+
         </ng-container>
 
       </ng-container>
 
-    </ng-container>
-
-  </tbody>
-</table>
-
+    </tbody>
+  </table>
+</div>
 <ng-template #modal>
   <div class="choise-depends">
     <div class="modal-header">
-      <h4>Choise a dependent for</h4>
+      <h4>{{ itemSelected?.key}} {{ itemSelected?.name}} depends on:</h4>
     </div>
     <div class="modal-body">
-      test
+      <input [(ngModel)]="currentSearch"
+        [typeahead]="allIssues"
+        typeaheadOptionField="search"
+        [typeaheadItemTemplate]="customItemTemplate"
+        (typeaheadOnSelect)="onSelectDependent($event)"
+        class="form-control">
     </div>
   </div>
+</ng-template>
+
+<ng-template #customItemTemplate let-model="item">
+  <span>{{model.key}} - {{model.name}}</span>
 </ng-template>

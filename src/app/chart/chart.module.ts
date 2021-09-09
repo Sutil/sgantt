@@ -1,11 +1,10 @@
-import { ChartService } from './chart.service';
-import { NgModule } from '@angular/core';
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { CommonModule } from '@angular/common';
-
-import { ChartRoutingModule } from './chart-routing.module';
-import { ChartComponent } from './chart.component';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { ChartRoutingModule } from './chart-routing.module';
+import { ChartComponent } from './chart.component';
 
 
 @NgModule({
@@ -15,6 +14,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     FormsModule,
     ChartRoutingModule,
     ModalModule.forChild(),
+    TypeaheadModule,
   ],
   providers: [
   ]

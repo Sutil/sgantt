@@ -43,12 +43,17 @@ export class Item {
     }
 
     minDate(): Date {
-      return this.depends?.getEndDate();
+      const minDate = this.depends?.getEndDate();
+      if(minDate) {
+        return addDays(minDate, 1);
+      }
+      return null;
     }
 
     getStartDate() {
+      const minDate = this.minDate();
       if(this.minDate()) {
-        return this.startDate >= this.minDate() ? this.startDate : this.minDate();
+        return this.startDate >= minDate ? this.startDate : minDate;
       }
 
       return this.startDate;

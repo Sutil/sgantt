@@ -7,7 +7,18 @@
   }
 }
 
+tr.child {
+  background-image: linear-gradient(to right, rgb(190, 255, 230), rgb(159, 236, 255));
+}
+
 td {
   min-width: 120px;
   padding: 0 20px;
+  white-space: nowrap;
+
+  &.name {
+    max-width: 300px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
 }

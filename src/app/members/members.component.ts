@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -7,6 +7,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./members.component.scss']
 })
 export class MembersComponent implements OnInit {
+
+  @ViewChild('inputName') inputName: ElementRef<HTMLInputElement>;
 
   form: FormGroup = this.fb.group({
     name: ['', Validators.required],
@@ -31,6 +33,7 @@ export class MembersComponent implements OnInit {
     }
     localStorage.setItem('sgannt:members', JSON.stringify(members));
     this.form.reset();
+    this.inputName.nativeElement.focus();
     this.fetchMembers();
   }
 
