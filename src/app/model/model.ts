@@ -6,5 +6,6 @@ export interface Model {
   estimate: number;
   dependsId?: number;
   type: string;
+  assignee?: string,
   erro?: string;
 }

@@ -1,3 +1,4 @@
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -15,6 +16,7 @@ import { ChartComponent } from './chart.component';
     ChartRoutingModule,
     ModalModule.forChild(),
     TypeaheadModule,
+    TooltipModule,
   ],
   providers: [
   ]

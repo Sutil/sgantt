@@ -25,20 +25,20 @@ export class MembersComponent implements OnInit {
 
   createMember() {
     const member = this.form.getRawValue();
-    let members: any[] = JSON.parse(localStorage.getItem('sgannt:members'));
+    let members: any[] = JSON.parse(localStorage.getItem('sgantt:members'));
     if(members) {
       members.push(member);
     } else {
       members = [member];
     }
-    localStorage.setItem('sgannt:members', JSON.stringify(members));
+    localStorage.setItem('sgantt:members', JSON.stringify(members));
     this.form.reset();
     this.inputName.nativeElement.focus();
     this.fetchMembers();
   }
 
   fetchMembers() {
-    const members = JSON.parse(localStorage.getItem('sgannt:members'));
+    const members = JSON.parse(localStorage.getItem('sgantt:members'));
     if(members) {
       this.members = members;
     }
@@ -48,7 +48,7 @@ export class MembersComponent implements OnInit {
     const idx = this.members.findIndex(m => m.name === member.name);
     if(idx > -1) {
       this.members.splice(idx, 1);
-      localStorage.setItem('sgannt:members', JSON.stringify(this.members));
+      localStorage.setItem('sgantt:members', JSON.stringify(this.members));
       this.fetchMembers();
     }
   }

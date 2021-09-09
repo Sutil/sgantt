@@ -1,3 +1,4 @@
+import { Member } from './member';
 import { addDays } from 'date-fns';
 
 export class Item {
@@ -13,7 +14,8 @@ export class Item {
     public depends?: Item,
     public children?: Item[],
     public dependsId?: number,
-    public error?: string
+    public error?: string,
+    public assignee?: Member
     ) {}
 
     getDuration() {
@@ -21,6 +23,19 @@ export class Item {
         return this.children.reduce((max, cur) => {return cur.getDuration() > max ? cur.getDuration() : max}, 0);
       }
       return this.duration || 0;
+    }
+
+    getHoursPerDay() {
+      if(this.assignee) {
+        return this.assignee.hours;
+      }
+      return 8;
+    }
+
+    getRealDuration() {
+      const realDuration = (this.getDuration() / this.getHoursPerDay()) * 8;
+
+      return Math.ceil(realDuration);
     }
 
 
@@ -37,7 +52,9 @@ export class Item {
       }
 
       if(this.getStartDate()) {
-        return addDays(this.getStartDate(), this.getDuration());
+        const a = addDays(this.getStartDate(), this.getRealDuration());
+
+        return a;
       }
       return this.endDate;
     }

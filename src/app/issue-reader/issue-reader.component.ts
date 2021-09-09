@@ -15,6 +15,8 @@ export class IssueReaderComponent implements OnInit {
 
   objs: Model[] = [];
 
+  selectedDate = new Date();
+
 
   constructor(private chartService: ChartService, private router: Router) { }
 
@@ -84,6 +86,7 @@ export class IssueReaderComponent implements OnInit {
         estimate: Number(strItem[5]),
         key: strItem[1],
         name: strItem[4],
+        assignee: strItem[8],
         dependsId: 0
       };
     } catch(err) {
@@ -101,8 +104,12 @@ export class IssueReaderComponent implements OnInit {
     }
   }
 
+  selectDate(strDate) {
+    console.log(strDate);
+  }
+
   export() {
-    this.chartService.setModel(this.objs);
+    this.chartService.setModel(this.objs, this.selectedDate);
     this.router.navigate(['chart'])
   }
 

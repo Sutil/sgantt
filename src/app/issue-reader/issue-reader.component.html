@@ -1,5 +1,16 @@
-<p>issue-reader works!</p>
+<h2>Select the start date</h2>
 
+<div class="date">
+  <input #dateInput type="text"
+           placeholder="Datepicker"
+           class="form-control"
+           bsDatepicker
+           [(ngModel)]="selectedDate"
+           (ngModelChange)="selectDate($event)"
+           [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }">
+</div>
+
+<hr>
 <div class="issues">
   <span>Cole abaixo a linha no formato:</span>
   <div>
@@ -24,6 +35,7 @@
         <th>key</th>
         <th>name</th>
         <th>duration</th>
+        <th>assignee</th>
       </tr>
     </thead>
     <tbody>
@@ -31,6 +43,7 @@
         <td [class.subtask]="i.type === 'Sub-task'">{{ i.key }}</td>
         <td>{{ i.name }}</td>
         <td>{{ i.estimate / (60*60*8) }}</td>
+        <td>{{ i.assignee }}</td>
       </tr>
     </tbody>
   </table>

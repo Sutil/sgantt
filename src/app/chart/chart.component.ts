@@ -1,3 +1,4 @@
+import { Model } from './../model/model';
 import { ItemSearch } from './../model/item-search';
 import { ChartService } from './chart.service';
 import { Component, OnInit, TemplateRef } from '@angular/core';
@@ -54,16 +55,41 @@ export class ChartComponent implements OnInit {
   }
 
   onSelectDependent(event) {
-    console.log(event);
     const dep = event.item;
     const findedDep = this.deepSearch(this.items, dep.key);
-    console.log(findedDep);
+
+    if(findedDep.id === this.itemSelected.id) {
+      alert('Associating task with the theirself!')
+      return;
+    }
+
+    if(this.dependentIsChild(findedDep)) {
+      alert('Associating task with their father!')
+      return;
+    }
+
+    console.log(this.itemSelected.key + ' depende de '+ findedDep.key);
     this.itemSelected.depends = findedDep;
     this.currentSearch = null;
+    this.saveState();
     this.closeModal();
   }
 
-  deepSearch(items: Item[], key: string) {
+  dependentIsChild(findedDep: Item) : boolean {
+    return findedDep.children && findedDep.children.some(c => c.id === this.itemSelected.id)
+  }
+
+  saveState() {
+    const dataSaved: Model[] = JSON.parse(localStorage.getItem('sgantt:models'));
+
+    const model = dataSaved.find(m => m.id === this.itemSelected.id);
+
+    model.dependsId = this.itemSelected.depends.id;
+    console.log(dataSaved);
+    localStorage.setItem('sgantt:models', JSON.stringify(dataSaved));
+  }
+
+  deepSearch(items: Item[], key: string): Item {
     const finded = items.find(i => i.key === key);
 
     if(finded) {
