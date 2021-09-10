@@ -64,10 +64,14 @@ export class ChartService {
     allFathers.forEach(f => {
       if(f.dependsId) {
         const dep = allchildren.find(d => d.id === f.dependsId);
-        f.depends = dep;
+        if(dep) {
+          f.depends = dep;
+        }
 
         const depf = allFathers.find(d => d.id === f.dependsId);
-        f.depends = depf;
+        if(depf) {
+          f.depends = depf;
+        }
       }
     });
 
