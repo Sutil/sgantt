@@ -1,0 +1,26 @@
+<div class="notion-config">
+  <form [formGroup]="form" (submit)="save()" >
+    <div class="mb-3">
+      <label for="input-key">Your Notion key</label>
+      <input id="input-id" type="text" required class="form-control" formControlName="notionKey">
+    </div>
+    <div class="mb-3">
+      <label for="input-database-id">Your Notion database id</label>
+      <input id="input-database-id" type="text" required class="form-control" formControlName="notionDatabaseId">
+    </div>
+
+    <button type="submit" class="btn btn-primary" >Save</button>
+  </form>
+
+  <hr class="m-5" >
+  <div class="row">
+    <div class="col-6">
+      <p>You key is</p>
+      <p>Your databaseId is: </p>
+    </div>
+    <div class="col-6">
+      <p>{{notionConfig?.notionKey}}</p>
+      <p>{{notionConfig?.notionDatabaseId}}</p>
+    </div>
+  </div>
+</div>

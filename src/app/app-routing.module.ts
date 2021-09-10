@@ -17,6 +17,10 @@ const routes: Routes = [{
     {
       path: 'chart',
       loadChildren: () => import('./chart/chart.module').then(m => m.ChartModule)
+    },
+    {
+      path: 'notion-config',
+      loadChildren: () => import('./notion-config/notion-config.module').then(m => m.NotionConfigModule)
     }
   ]
 }];
