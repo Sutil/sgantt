@@ -17,6 +17,7 @@ export class ChartService {
 
 
     this.list = JSON.parse(localStorage.getItem('sgantt:models'));
+
     const date = new Date(JSON.parse(localStorage.getItem('sgantt:startDate')));
     let members: Member[] = JSON.parse(localStorage.getItem('sgantt:members'));
 
@@ -49,10 +50,14 @@ export class ChartService {
     allchildren.forEach(c => {
       if(c.dependsId) {
         const dep = allchildren.find(d => d.id === c.dependsId);
-        c.depends = dep;
+        if(dep) {
+          c.depends = dep;
+        }
 
         const depf = allFathers.find(d => d.id === c.dependsId);
-        c.depends = depf;
+        if(depf){
+          c.depends = depf;
+        }
       }
     });
 

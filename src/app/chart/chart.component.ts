@@ -86,7 +86,7 @@ export class ChartComponent implements OnInit {
 
     model.dependsId = this.itemSelected.depends.id;
     console.log(dataSaved);
-    localStorage.setItem('sgantt:models', JSON.stringify(dataSaved));
+    localStorage.setItem('sgantt:models', JSON.stringify([...dataSaved]));
   }
 
   deepSearch(items: Item[], key: string): Item {
